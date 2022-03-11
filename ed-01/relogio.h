@@ -7,13 +7,19 @@ class Relogio {
 
 public:
 
+    Relogio(){
+
+        this->hora = 0;
+        this->minuto = 0;
+    }
+
     void setHora(int hora);
 
     void setMinutos(int minuto);
 
-    std::string RetornaMinutosTotais();
+    std::string getMinutosTotais();
 
-    std::string RetornaHorarioFormatado();
+    std::string getHorarioFormatado();
 
     bool isHorariosValidos();
 

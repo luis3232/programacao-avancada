@@ -1,18 +1,18 @@
-
-
 #include "relogio.h"
 
 #include <sstream>
+#include <iomanip>
+#include <ctime>
 
 using namespace std;
 
 template <typename T>
-  std::string NumberToString ( T Number )
-  {
-     std::ostringstream ss;
-     ss << Number;
-     return ss.str();
-  }
+std::string numberToString(T Number)
+{
+    std::ostringstream ss;
+    ss << Number;
+    return ss.str();
+}
 
 void Relogio::setHora(int hora)
 {
@@ -24,29 +24,28 @@ void Relogio::setMinutos(int minuto)
     this->minuto = minuto;
 }
 
-string Relogio::RetornaMinutosTotais()
+string Relogio::getMinutosTotais()
 {
     int horas_totais = (this->hora * 60) + this->minuto;
 
-    return NumberToString(horas_totais);
+    return numberToString(horas_totais);
 }
 
-string Relogio::RetornaHorarioFormatado()
+string Relogio::getHorarioFormatado()
 {
-    string nova_hora = (this->hora < 10 ? "0" : "") + NumberToString(this->hora);
-    string novo_minuto = (this->minuto < 10 ? "0" : "") + NumberToString(this->minuto);
-
-    string novo_horario = nova_hora + ":" + novo_minuto;
+    std::tm tm{};
+    tm.tm_hour = this->hora;
+    tm.tm_min = this->minuto;
+    std::time_t t = std::mktime(&tm); 
+    
+    std::ostringstream oss;
+    oss << std::put_time(std::localtime(&t),"%H:%M");
+    string novo_horario = oss.str();
 
     return novo_horario;
 }
 
 bool Relogio::isHorariosValidos()
 {
-    if (this->hora > 23 || this->hora < 0)
-        return false;
-    if (this->minuto > 59 || this->minuto < 0)
-        return false;
-
-    return true;
+    return this->hora >= 0 && this->hora <= 23 && this->minuto >= 0 && this->minuto <= 59;
 }

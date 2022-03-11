@@ -1,4 +1,4 @@
-#include "iostream"
+#include <iostream>
 
 using namespace std;
 
@@ -8,8 +8,8 @@ int main()
 {
     Relogio horario[3];
 
-    int valores[3][2] = {};
-
+    int hora = 0, minuto = 0;
+    
     for (int i = 0; i < 3; i++)
     {
         bool isDadosValidos = false;
@@ -17,24 +17,29 @@ int main()
         do
         {
             cout << "Insira as informacoes do " << i+1 << " horario !\nHora: ";
-            cin >> valores[i][0];
+            cin >> hora;
             cout << "Minutos: ";
-            cin >> valores[i][1];
+            cin >> minuto;
             cout << "\n";
 
-            horario[i].setHora(valores[i][0]);
-            horario[i].setMinutos(valores[i][1]);
+            horario[i].setHora(hora);
+            horario[i].setMinutos(minuto);
 
             isDadosValidos = horario[i].isHorariosValidos();
 
             if (!isDadosValidos)
+            {
                 cout << "Preencha as informacoes de horarios corretamente!\n" << endl;
+            }
+
         } while (!isDadosValidos);
     }
 
     for (int i = 0; i < 3; i++)
-        cout << "\nHorarios informados no " << i + 1 << " horario: " << horario[i].RetornaHorarioFormatado()
-        << ", totalizando: " << horario[i].RetornaMinutosTotais() << " minutos!" << endl;
+    {
+        cout << "\nHorarios informados no " << i + 1 << " horario: " << horario[i].getHorarioFormatado()
+        << ", totalizando: " << horario[i].getMinutosTotais() << " minutos!" << endl;
+    }
 
     return 0;
 }
