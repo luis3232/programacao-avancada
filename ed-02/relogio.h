@@ -21,8 +21,7 @@ class Relogio {
 
 public:
 
-    Relogio() {
-    }
+    Relogio() : hora(0), minuto(0){}
     
     Relogio(int hora_p, int minuto_p): hora(hora_p), minuto(minuto_p) {}
 
