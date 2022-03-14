@@ -11,7 +11,8 @@ using namespace std;
 int main() {
     Relogio horario[3];
 
-    int hora = 0, minuto = 0;
+    int hora = 0;
+    int minuto = 0;
     
     for (int i = 0; i < 3; i++) {
         bool isDadosValidos = false;
@@ -31,7 +32,6 @@ int main() {
             if (!isDadosValidos) {
                 cout << "Preencha as informacoes de horarios corretamente!\n" << endl;
             }
-
         } while (!isDadosValidos);
     }
 
