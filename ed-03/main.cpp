@@ -34,8 +34,5 @@ int main()
     hora1.soma(hora2);
 
     delete cliente1;
-	cliente1 = nullptr;
-	
     delete cliente2;
-	cliente2 = nullptr;
 }
