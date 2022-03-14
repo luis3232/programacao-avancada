@@ -14,13 +14,10 @@ class Conta {
 
 public:
 
-	Conta() {
+	Conta() : _agencia(""), _numero(""), _saldo(0) {}
 
-	}
-
-	Conta(std::string numero, std::string agencia, Cliente cliente) :
-		_numero(numero), _agencia(agencia), _cliente(cliente) {
-		std::cout << "\nCriando conta do cliente " << _cliente.getNome() << "!" << std::endl;
+	Conta(std::string numero, std::string agencia, Cliente *cliente) : _numero(numero), _agencia(agencia), _cliente(cliente) {
+		std::cout << "\nCriando conta do cliente " << _cliente->getNome() << "!" << std::endl;
 	}
 
 	void deposita(float valor) {
@@ -46,22 +43,20 @@ public:
 		}
 	}
 
-	void alteraCliente(Cliente cliente) {
-
-		std::string old_nome = _cliente.getNome();
+	void alteraCliente(Cliente *cliente) {
+		std::string old_nome = _cliente->getNome();
 		_cliente = cliente;
 
 		std::cout << "\nCliente alterado com sucesso, de " << old_nome << " para " 
-			<< _cliente.getNome() << "!" << std::endl;
+			<< _cliente->getNome() << "!" << std::endl;
 	}
 
 	void imprimeSaldo() const {
-		std::cout << "\nConta: " << _numero << " / Cliente: " << _cliente.getNome() << std::endl;
+		std::cout << "\nConta: " << _numero << " / Cliente: " << _cliente->getNome() << std::endl;
 		std::cout << "Saldo: " << _saldo << std::endl;
 	}
 
-	std::string getStringValue(int x) const
-	{
+	std::string getStringValue(int x) const {
 		std::string str;
 
 		std::stringstream ss;
@@ -72,11 +67,12 @@ public:
 	}
 
 private:
+	std::string _agencia;
+	std::string _numero;
 
-	std::string _agencia, _numero;
 	float _saldo;
 
-	Cliente _cliente;
+	Cliente *_cliente;
 };
 
 #endif

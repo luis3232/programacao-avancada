@@ -12,9 +12,7 @@ class Cliente {
 
 	public:
 		
-		Cliente() {
-
-		}
+		Cliente() : _nome(""), _email(""), _data_nascimento(""), _idade(0) {}
 
 		Cliente(std::string nome, std::string email, std::string data_nascimento, int idade) :
 			_nome(nome), _email(email), _data_nascimento(data_nascimento), _idade(idade) {
@@ -54,8 +52,9 @@ class Cliente {
 		}
 
 	private:
-
-		std::string _nome, _email, _data_nascimento;
+		std::string _nome;
+		std::string _email;
+		std::string _data_nascimento;
 		int _idade;
 };
 

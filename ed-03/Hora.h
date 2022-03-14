@@ -11,11 +11,7 @@ class Hora {
 
 public:
 
-	Hora() {
-		_hora = 0;
-		_minuto = 0;
-		_segundo = 0;
-	}
+	Hora() : _hora(0), _minuto(0), _segundo(0) {}
 
 	Hora(int hora, int minuto, int segundo) : _hora(hora), _minuto(minuto), _segundo(segundo) {
 		std::cout << "\nInicializando o objeto hora!" << std::endl;
@@ -66,7 +62,6 @@ public:
 	}
 
 	bool setValoresHorario(int segundos_totais) {
-
 		if (segundos_totais > 0) {
 			int resto;
 
@@ -77,13 +72,14 @@ public:
 
 			return true;
 		}
-		
-        // Se o método só tem um condicional com return, o else pode ser omitido.
-        return false;
+
+		return false;
 	}
 
 private:
-	int _hora, _minuto, _segundo;
+	int _hora;
+	int _minuto;
+	int _segundo;
 };
 
 #endif

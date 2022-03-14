@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    Cliente cliente1("luis", "luis.hihi", "17/09/1998", 23);
+    Cliente *cliente1 = new Cliente("luis", "luis.hihi", "17/09/1998", 23);
 
     Conta conta("26735-0", "997", cliente1);
 
@@ -22,7 +22,7 @@ int main()
     conta.deposita(50);
     conta.imprimeSaldo();
 
-    Cliente cliente2("joao", "joao.hihi", "17/09/2006", 16);
+    Cliente *cliente2 = new Cliente("joao", "joao.hihi", "17/09/2006", 16);
 
     conta.alteraCliente(cliente2);
 
@@ -32,4 +32,7 @@ int main()
     Hora hora2(23, 56, 0);
 
     hora1.soma(hora2);
+
+    delete cliente1;
+    delete cliente2;
 }
