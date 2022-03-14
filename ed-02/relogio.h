@@ -21,23 +21,20 @@ class Relogio {
 
 public:
 
-    Relogio(){
-        this->hora = 0;
-        this->minuto = 0;
+    Relogio() {
     }
+    
+    Relogio(int hora_p, int minuto_p): hora(hora_p), minuto(minuto_p) {}
 
-    void setHora(int hora)
-    {
+    void setHora(int hora) {
         this->hora = hora;
     }
 
-    void setMinutos(int minuto)
-    {
+    void setMinutos(int minuto) {
         this->minuto = minuto;
     }
 
-    std::string getMinutosTotais() const
-    {
+    std::string getMinutosTotais() const {
         int horas_totais = (this->hora * 60) + this->minuto;
         
         return this->getStringValue(horas_totais);

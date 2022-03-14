@@ -9,8 +9,7 @@ RA: 2017207390 */
 
 using namespace std;
 
-string Relogio::getStringValue(int x) const
-{
+string Relogio::getStringValue(int x) const {
     std::string str;
         
     std::stringstream ss;  
@@ -20,8 +19,7 @@ string Relogio::getStringValue(int x) const
     return str;
 }
 
-string Relogio::getHorarioFormatado() const
-{
+string Relogio::getHorarioFormatado() const {
     std::tm tm{};
     tm.tm_hour = this->hora;
     tm.tm_min = this->minuto;
