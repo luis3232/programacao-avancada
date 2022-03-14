@@ -77,9 +77,9 @@ public:
 
 			return true;
 		}
-		else {
-			return false;
-		}
+		
+        // Se o método só tem um condicional com return, o else pode ser omitido.
+        return false;
 	}
 
 private:
