@@ -28,7 +28,7 @@ public:
 		std::cout << "\nBanco inicializado com sucesso!" << std::endl;
 	}
 
-	~Banco() {
+	virtual ~Banco() {
 		for (int i = 0; i < _capacidade_banco; i++) {
 			delete _contas[i];
 		}
@@ -56,11 +56,11 @@ public:
 		std::cout << "\nConta adicionada com sucesso!" << std::endl;
 	}
 
-	Conta** getContas() {
+	Conta** getContas() const {
 		return _contas;
 	}
 
-	Conta* getContaEspecifica(int x) {
+	Conta* getContaEspecifica(int x) const {
 		if (x < 0 || x >= _capacidade_banco) {
 			return NULL;
 		}
