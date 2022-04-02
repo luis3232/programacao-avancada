@@ -26,7 +26,7 @@ public:
 		if (valor > 0) {
 			_saldo += valor;
 
-			std::cout << "\nValor de " << this->getStringValue(valor) << " adicionado com sucesso!" << std::endl;
+			std::cout << "\nValor de " << valor << " adicionado com sucesso!" << std::endl;
 		}
 		else {
 			std::cout << "\nValor deve ser positivo!" << std::endl;
@@ -35,13 +35,13 @@ public:
 
 	void retira(float valor) {
 		if (_saldo - valor < 0) {
-			std::cout << "\nNao e possivel retirar a quantidade " << this->getStringValue(valor) 
+			std::cout << "\nNao e possivel retirar a quantidade " << valor
 				<< ", o saldo atual e de: " << _saldo << std::endl;
 		}
 		else {
 			_saldo -= valor;
 
-			std::cout << "\nValor de " << this->getStringValue(valor) << " retirado com sucesso!" << std::endl;
+			std::cout << "\nValor de " << valor << " retirado com sucesso!" << std::endl;
 		}
 	}
 
@@ -60,16 +60,6 @@ public:
 
 	float getSaldo() const {
 		return _saldo;
-	}
-
-	std::string getStringValue(int x) const {
-		std::string str;
-
-		std::stringstream ss;
-		ss << x;
-		ss >> str;
-
-		return str;
 	}
 
 private:

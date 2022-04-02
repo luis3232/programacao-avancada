@@ -42,7 +42,8 @@ int main()
     delete conta_poupanca;
     conta_poupanca = nullptr;
 
-    delete[] clientes;
+    delete clientes[0];
+    delete clientes[1];
 
     return 1;
 }

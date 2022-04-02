@@ -16,7 +16,6 @@ class ContaSalario : public Conta {
 public:
 
 	ContaSalario(std::string numero, std::string agencia, Cliente* cliente) : Conta(numero, agencia, cliente) {}
-
 };
 
 #endif

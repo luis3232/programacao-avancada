@@ -18,8 +18,7 @@ public:
 	ContaPoupanca(std::string numero, std::string agencia, Cliente* cliente) : Conta(numero, agencia, cliente), Investimento(0.08) {}
 
 	void aplicaJurosDiarios(int dias) {
-
-		float juros = Investimento::getTaxaJuros() * dias * Conta::getSaldo();
+		float juros = (Investimento::getTaxaJuros() * dias * Conta::getSaldo()) / 100;
 
 		std::cout << "\n-- JUROS --" << std::endl;
 		std::cout << "Juros: " << juros << std::endl;
