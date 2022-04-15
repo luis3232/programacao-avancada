@@ -56,7 +56,19 @@ public:
 		VetorInt* resultado = new VetorInt(max_tam);
 
 		for (int i = 0; i < max_tam; i++) {
-			resultado->setInteiro(i, (*v1)(i) + (i < tamanho_vetor ? vetor[i] : 0));
+			resultado->setInteiro(i, (i < tamanho_vetor ? vetor[i] : 0) + (*v1)(i));
+		}
+
+		return resultado;
+	}
+
+	VetorInt* operator-(VetorInt* v1) {
+		int max_tam = v1->getTamanho() > this->tamanho_vetor ? v1->getTamanho() : this->tamanho_vetor;
+
+		VetorInt* resultado = new VetorInt(max_tam);
+
+		for (int i = 0; i < max_tam; i++) {
+			resultado->setInteiro(i, (i < tamanho_vetor ? vetor[i] : 0) - (*v1)(i));
 		}
 
 		return resultado;
@@ -74,25 +86,13 @@ public:
 		}
 	}
 
-	VetorInt* operator-(VetorInt* v1) {
-		int max_tam = v1->getTamanho() > this->tamanho_vetor ? v1->getTamanho() : this->tamanho_vetor;
-
-		VetorInt* resultado = new VetorInt(max_tam);
-
-		for (int i = 0; i < max_tam; i++) {
-			resultado->setInteiro(i, (*v1)(i) - (i < tamanho_vetor ? vetor[i] : 0));
-		}
-
-		return resultado;
-	}
-
 	VetorInt* operator*(VetorInt* v1) {
 		int max_tam = v1->getTamanho() > this->tamanho_vetor ? v1->getTamanho() : this->tamanho_vetor;
 
 		VetorInt* resultado = new VetorInt(max_tam);
 
 		for (int i = 0; i < max_tam; i++) {
-			resultado->setInteiro(i, (*v1)(i) * (i < tamanho_vetor ? vetor[i] : 0));
+			resultado->setInteiro(i, (i < tamanho_vetor ? vetor[i] : 0) * (*v1)(i));
 		}
 
 		return resultado;
