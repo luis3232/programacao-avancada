@@ -1,0 +1,2 @@
+- Nome de classe sempre no singular. Nomes no plural indicam que a classe armazena mais de uma entidade. 
+    - Exceto se a classe representar várias entidades, e.g., ListaAlunos, 
