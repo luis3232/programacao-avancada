@@ -58,6 +58,7 @@ public:
             std::cout << "ID......: " << lista[i].getID() << std::endl;
             std::cout << "Nome......: " << lista[i].getNome() << std::endl;
             std::cout << "Documento......: " << lista[i].getCPF() << std::endl;
+            std::cout << "Ativo......: " << lista[i].getisAtivo() << std::endl;
             std::cout << std::endl;
         }
     }
@@ -82,6 +83,7 @@ public:
         std::cout << "Estado......: " << lista[posicao].getEstado() << std::endl;
         std::cout << "Numero......: " << lista[posicao].getNumero() << std::endl;
         std::cout << "Complemento......: " << lista[posicao].getComplemento() << std::endl;
+        std::cout << "Ativo......: " << lista[posicao].getisAtivo() << std::endl;
         std::cout << std::endl;
     }
 

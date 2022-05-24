@@ -16,7 +16,7 @@ public:
 
 	Cliente(std::string nome = "", std::string email = "", std::string celular = "", std::string cpf = "",
 		float mensalidade = 0.0, std::string endereco = "", std::string bairro = "", std::string cidade = "",
-		std::string estado = "", int numero = 0, std::string complemento = "") :
+		std::string estado = "", int numero = 0, std::string complemento = "", bool isativo) :
 		Nome(nome),
 		Email(email),
 		Celular(celular),
@@ -27,7 +27,8 @@ public:
 		Cidade(cidade),
 		Estado(estado),
 		Numero(numero),
-		Complemento(complemento) {
+		Complemento(complemento),
+		isAtivo(isativo) {
 	}
 
 	const long& getID() const {
@@ -122,6 +123,14 @@ public:
 		Complemento = complemento;
 	}
 
+	const bool& getisAtivo() const {
+		return isAtivo;
+	}
+
+	void setisAtivo(const bool& isativo) {
+		isAtivo = isativo;
+	}
+
 	virtual ~Cliente() {}
 
 private:
@@ -137,6 +146,7 @@ private:
 	std::string Estado;
 	int Numero;
 	std::string Complemento;
+	bool isAtivo;
 };
 
 #endif
