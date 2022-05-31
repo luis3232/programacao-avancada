@@ -64,14 +64,21 @@ public:
     }
 
     void cadastrarEntradaSaida() {
-        Entrada_Saida_Veiculo ent_saida = _tela_ent_saida.lerNovaEntrada(_ent_saida_dao.getCurrentID());
+        try {
+            Entrada_Saida_Veiculo ent_saida = _tela_ent_saida.lerNovaEntrada(_ent_saida_dao.getCurrentID());
 
-        if (_tela_ent_saida.isPermiteCadastrarEntradaSaida(_ent_saida_veiculos, ent_saida)) {
-            ent_saida.insereEntSaida(_ent_saida_veiculos, ent_saida);
+            if (ent_saida.insereEntSaida(_ent_saida_veiculos, ent_saida)) {
 
-            _ent_saida_dao.salvaListaEntradaSaida(_ent_saida_veiculos);
+                _ent_saida_dao.salvaListaEntradaSaida(_ent_saida_veiculos);
 
-            _ent_saida_dao.updateCurrentID();
+                _ent_saida_dao.updateCurrentID();
+            }
+            else {
+                _tela_ent_saida.exibirMensagemErro("\n\nNao foi possivel cadastrar, vaga ocupada!");
+            }
+        }
+        catch (const char* erro) {
+            _tela_ent_saida.exibirMensagemErro(erro);
         }
     }
 

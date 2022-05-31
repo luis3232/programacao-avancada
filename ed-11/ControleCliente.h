@@ -63,13 +63,18 @@ public:
     }
 
     void cadastrarCliente() {
-        Cliente cliente = _tela_cliente.lerNovoCliente(_dao_cliente.getCurrentID());
+        try {
+            Cliente cliente = _tela_cliente.lerNovoCliente(_dao_cliente.getCurrentID());
 
-        cliente.insereCliente(_clientes, cliente);
+            cliente.insereCliente(_clientes, cliente);
 
-        _dao_cliente.salvaListaCliente(_clientes);
+            _dao_cliente.salvaListaCliente(_clientes);
 
-        _dao_cliente.updateCurrentID();
+            _dao_cliente.updateCurrentID();
+        }
+        catch (const char* erro) {
+            _tela_cliente.exibirMensagemErro(erro);
+        }
     }
 
     void alterarCliente() {

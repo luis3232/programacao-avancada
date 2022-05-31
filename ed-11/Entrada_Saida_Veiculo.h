@@ -192,9 +192,44 @@ public:
 		return true;
 	}
 
-	void insereEntSaida(std::vector<Entrada_Saida_Veiculo>& lista, Entrada_Saida_Veiculo cliente)
+	bool isPermiteCadastrarEntradaSaida(std::vector<Entrada_Saida_Veiculo>& lista, Entrada_Saida_Veiculo cliente) {
+
+		int vaga_current = cliente.getVaga();
+
+		if (vaga_current <= 0 || vaga_current > 100) {
+			return false;
+		}
+
+		bool isEstacionado = false;
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista[i].getIsFinalizado()) {
+				continue;
+			}
+
+			if (lista[i].getVaga() == vaga_current) {
+				isEstacionado = true;
+				break;
+			}
+		}
+
+		if (isEstacionado) {
+			return false;
+		}
+
+		return true;
+	}
+
+	bool insereEntSaida(std::vector<Entrada_Saida_Veiculo>& lista, Entrada_Saida_Veiculo cliente)
 	{
-		lista.push_back(cliente);
+		bool isInserido = false;
+
+		if (Entrada_Saida_Veiculo::isPermiteCadastrarEntradaSaida(lista, cliente)) {
+			lista.push_back(cliente);
+			isInserido = true;
+		}
+
+		return isInserido;
 	}
 
 	std::string getNomeCliente(const std::vector<Cliente>& lista) const {
