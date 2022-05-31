@@ -1,0 +1,8 @@
+5,luis terceiro,email,sad,1,1,1,1,1,1,1,1,1
+2,luis aurelio campos,luis.nini1998@gmail.com,41 988822914,119.469.929-41,120,estrada de santa candida,santa candida,curitiba,parana,510,casa 3,1
+6,leandro,1,1,1,1,1,1,1,1,1,1,1
+8,leandro outro,1,1,1,1,1,1,1,1,1,1,1
+13,1,1,1,1,1,1,1,,1,1,1,1
+10,sadsad,1,1,1,1,1,1,1,1,1,1,1
+11,sdsad,1,1,1,1,1,1,1,1,1,1,1
+14,1,1,1,1,1,1,1,1,1,1,1,1
