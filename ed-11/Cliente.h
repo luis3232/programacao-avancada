@@ -37,7 +37,16 @@ public:
 	}
 
 	void setID(const long& id) {
-		ID = id;
+		try {
+			if (id < 0) {
+				throw "\n\nO numero deve ser positivo!";
+			}
+
+			ID = id;
+		}
+		catch (std::string erro) {
+
+		}
 	}
 
 	const long& getID() const {
@@ -81,7 +90,16 @@ public:
 	}
 
 	void setMensalidade(const float& mensalidade) {
-		Mensalidade = mensalidade;
+		try {
+			if (mensalidade < 0) {
+				throw "\n\nO numero deve ser positivo!";
+			}
+
+			Mensalidade = mensalidade;
+		}
+		catch (std::string erro) {
+
+		}
 	}
 
 	const std::string& getEndereco() const {
@@ -121,7 +139,16 @@ public:
 	}
 
 	void setNumero(const int& numero) {
-		Numero = numero;
+		try {
+			if (numero < 0) {
+				throw "\n\nO numero deve ser positivo!";
+			}
+
+			Numero = numero;
+		}
+		catch (std::string erro) {
+
+		}
 	}
 
 	const std::string& getComplemento() const {
@@ -150,16 +177,19 @@ public:
 	}
 
 	bool alterarCliente(std::vector<Cliente>& lista, Cliente cliente, int posicao) {
+        try {
+            if (posicao < 0 || posicao > lista.size()) {
+                throw "\n\Posicao invalida!";
+            }
 
-		if (posicao < 0 || posicao > lista.size()) {
-			return false;
-		}
+            lista[posicao] = cliente;
 
-		lista[posicao] = cliente;
+            std::cout << "Cliente alterado com sucesso!" << std::endl;
 
-		std::cout << "Cliente alterado com sucesso!" << std::endl;
-
-		return true;
+            return true;
+        } catch (std::string erro) {
+            return false;
+        }
 	}
 
 	void insereCliente(std::vector<Cliente>& lista, Cliente cliente) {

@@ -68,7 +68,14 @@ public:
 	}
 
 	void setVaga(const int& vaga) {
-		Vaga = vaga;
+	    try {
+	        if (vaga <= 0 || Vaga > 100) {
+                throw "\n\nA vaga deve ser entre 1 e 100!";
+	        }
+	        Vaga = vaga;
+	    } catch (std::string erro) {
+
+	    }
 	}
 
 	const std::string& getPlaca() const {
@@ -161,7 +168,14 @@ public:
 	}
 
 	void setValor(const float& valor) {
-		Valor = valor;
+	    try {
+            if (valor < 0) {
+                throw "\n\nO valor deve ser positivo!";
+            }
+
+            Valor = valor;
+	    } catch (std::string erro) {
+	    }
 	}
 
 	void setClienteID(const long& id) {
@@ -181,19 +195,28 @@ public:
 	}
 
 	bool alterarEntradaSaida(float valor) {
+        try {
+            if (valor < 0) {
+                throw "\nValor nao pode ser negativo!";
+            }
+            if (this->isFinalizado == true) {
+                throw "\nEntrada ja finalizada!";
+            }
 
-		this->Valor = valor;
-		this->isFinalizado = true;
+            this->Valor = valor;
+            this->isFinalizado = true;
 
-		std::time_t t = std::time(0);   // get time now
+            std::time_t t = std::time(0);   // get time now
 
-		this->setDt_Saida(std::localtime(&t));
+            this->setDt_Saida(std::localtime(&t));
 
-		return true;
+            return true;
+        } catch (std::string erro) {
+            return false;
+        }
 	}
 
 	bool isPermiteCadastrarEntradaSaida(std::vector<Entrada_Saida_Veiculo>& lista, Entrada_Saida_Veiculo cliente) {
-
 		int vaga_current = cliente.getVaga();
 
 		if (vaga_current <= 0 || vaga_current > 100) {
@@ -220,20 +243,20 @@ public:
 		return true;
 	}
 
-	bool insereEntSaida(std::vector<Entrada_Saida_Veiculo>& lista, Entrada_Saida_Veiculo cliente)
-	{
-		bool isInserido = false;
-
-		if (Entrada_Saida_Veiculo::isPermiteCadastrarEntradaSaida(lista, cliente)) {
-			lista.push_back(cliente);
-			isInserido = true;
-		}
-
-		return isInserido;
+	bool insereEntSaida(std::vector<Entrada_Saida_Veiculo>& lista, Entrada_Saida_Veiculo cliente) {
+	    try {
+            if (Entrada_Saida_Veiculo::isPermiteCadastrarEntradaSaida(lista, cliente)) {
+                lista.push_back(cliente);
+            } else {
+                throw "\n\nNao foi possivel cadastrar, vaga ocupada!";
+            }
+            return true;
+        } catch (std::string erro) {
+            return false;
+        }
 	}
 
 	std::string getNomeCliente(const std::vector<Cliente>& lista) const {
-
 		if (this->getClienteID() < 0) {
 			return "";
 		}

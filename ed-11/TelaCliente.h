@@ -42,13 +42,18 @@ public:
     };
 
     int lerPosicao() const {
-        std::cout << "\n\n== Posicao a ser acessada ==" << std::endl;
+        try {
+            std::cout << "\n\n== Posicao a ser acessada ==" << std::endl;
 
-        int posicao;
-        std::cout << "Posicao: ";
-        std::cin >> posicao;
+            int posicao;
+            std::cout << "Posicao: ";
+            std::cin >> posicao;
 
-        return posicao;
+            return posicao;
+        }
+        catch (std::string erro) {
+
+        }
     }
 
     void imprimirClientes(const std::vector<Cliente>& lista) const {
@@ -103,138 +108,148 @@ public:
     }
 
 
-    Cliente lerNovoCliente(long ID) const {
+    Cliente lerNovoCliente(long ID) {
 
-        std::string Nome;
-        std::string Email;
-        std::string Celular;
-        std::string CPF;
-        float Mensalidade;
-        std::string Endereco;
-        std::string Bairro;
-        std::string Cidade;
-        std::string Estado;
-        int Numero;
-        std::string Complemento;
-        int isAtivo;
+        try {
+            std::string Nome;
+            std::string Email;
+            std::string Celular;
+            std::string CPF;
+            float Mensalidade;
+            std::string Endereco;
+            std::string Bairro;
+            std::string Cidade;
+            std::string Estado;
+            int Numero;
+            std::string Complemento;
+            int isAtivo;
 
-        std::cout << "\n\n== Dados do Cliente ==" << std::endl;
+            std::cout << "\n\n== Dados do Cliente ==" << std::endl;
 
-        std::cout << "Nome......: ";
-        std::getline(std::cin, Nome);
+            std::cout << "Nome......: ";
+            std::getline(std::cin, Nome);
 
-        std::cout << "Email......: ";
-        std::getline(std::cin, Email);
+            std::cout << "Email......: ";
+            std::getline(std::cin, Email);
 
-        std::cout << "Celular......: ";
-        std::getline(std::cin, Celular);
+            std::cout << "Celular......: ";
+            std::getline(std::cin, Celular);
 
-        std::cout << "CPF......: ";
-        std::getline(std::cin, CPF);
+            std::cout << "CPF......: ";
+            std::getline(std::cin, CPF);
 
-        std::cout << "Mensalidade......: ";
-        std::cin >> Mensalidade;
+            std::cout << "Mensalidade......: ";
+            std::cin >> Mensalidade;
 
-        std::cin.ignore();
-        std::cout << "Endereco......: ";
-        std::getline(std::cin, Endereco);
+            std::cin.ignore();
+            std::cout << "Endereco......: ";
+            std::getline(std::cin, Endereco);
 
-        std::cout << "Bairro......: ";
-        std::getline(std::cin, Bairro);
+            std::cout << "Bairro......: ";
+            std::getline(std::cin, Bairro);
 
-        std::cout << "Cidade......: ";
-        std::getline(std::cin, Cidade);
+            std::cout << "Cidade......: ";
+            std::getline(std::cin, Cidade);
 
-        std::cout << "Estado......: ";
-        std::getline(std::cin, Estado);
+            std::cout << "Estado......: ";
+            std::getline(std::cin, Estado);
 
-        std::cout << "Numero......: ";
-        std::cin >> Numero;
+            std::cout << "Numero......: ";
+            std::cin >> Numero;
 
-        std::cin.ignore();
-        std::cout << "Complemento......: ";
-        std::getline(std::cin, Complemento);
+            std::cin.ignore();
+            std::cout << "Complemento......: ";
+            std::getline(std::cin, Complemento);
 
-        std::cout << "Ativo (0 ou 1)......: ";
-        
-        do {
-            std::cin >> isAtivo;
-        } while (isAtivo != 0 && isAtivo != 1);
+            std::cout << "Ativo (0 ou 1)......: ";
 
-        return Cliente(ID, Nome, Email, Celular, CPF, Mensalidade, Endereco, Bairro, Cidade, Estado, Numero, Complemento, isAtivo);
+            do {
+                std::cin >> isAtivo;
+            } while (isAtivo != 0 && isAtivo != 1);
+
+            return Cliente(ID, Nome, Email, Celular, CPF, Mensalidade, Endereco, Bairro, Cidade, Estado, Numero, Complemento, isAtivo);
+        }
+        catch (std::string erro) {
+
+        }
     }
 
     void alterarCliente(Cliente& cliente) {
 
-        std::string Nome;
-        std::string Email;
-        std::string Celular;
-        std::string CPF;
-        float Mensalidade;
-        std::string Endereco;
-        std::string Bairro;
-        std::string Cidade;
-        std::string Estado;
-        int Numero;
-        std::string Complemento;
-        int isAtivo;
+        try {
+            std::string Nome;
+            std::string Email;
+            std::string Celular;
+            std::string CPF;
+            float Mensalidade;
+            std::string Endereco;
+            std::string Bairro;
+            std::string Cidade;
+            std::string Estado;
+            int Numero;
+            std::string Complemento;
+            int isAtivo;
 
-        std::cout << "== Dados do Cliente ==" << std::endl;
+            std::cout << "== Dados do Cliente ==" << std::endl;
 
-        std::cin.ignore();
-        std::cout << "Nome......: ";
-        std::getline(std::cin, Nome);
-        cliente.setNome(Nome);
+            std::cin.ignore();
+            std::cout << "Nome......: ";
+            std::getline(std::cin, Nome);
+            cliente.setNome(Nome);
 
-        std::cout << "Email......: ";
-        std::getline(std::cin, Email);
-        cliente.setEmail(Email);
+            std::cout << "Email......: ";
+            std::getline(std::cin, Email);
+            cliente.setEmail(Email);
 
-        std::cout << "Celular......: ";
-        std::getline(std::cin, Celular);
-        cliente.setCelular(Celular);
+            std::cout << "Celular......: ";
+            std::getline(std::cin, Celular);
+            cliente.setCelular(Celular);
 
-        std::cout << "CPF......: ";
-        std::getline(std::cin, CPF);
-        cliente.setCPF(CPF);
+            std::cout << "CPF......: ";
+            std::getline(std::cin, CPF);
+            cliente.setCPF(CPF);
 
-        std::cout << "Mensalidade......: ";
-        std::cin >> Mensalidade;
-        cliente.setMensalidade(Mensalidade);
-        std::cin.ignore();
+            std::cout << "Mensalidade......: ";
+            std::cin >> Mensalidade;
+            cliente.setMensalidade(Mensalidade);
+            std::cin.ignore();
 
-        std::cout << "Endereco......: ";
-        std::getline(std::cin, Endereco);
-        cliente.setEndereco(Endereco);
+            std::cout << "Endereco......: ";
+            std::getline(std::cin, Endereco);
+            cliente.setEndereco(Endereco);
 
-        std::cout << "Bairro......: ";
-        std::getline(std::cin, Bairro);
-        cliente.setBairro(Bairro);
+            std::cout << "Bairro......: ";
+            std::getline(std::cin, Bairro);
+            cliente.setBairro(Bairro);
 
-        std::cout << "Cidade......: ";
-        std::getline(std::cin, Cidade);
-        cliente.setNome(Nome);
+            std::cout << "Cidade......: ";
+            std::getline(std::cin, Cidade);
+            cliente.setNome(Nome);
 
-        std::cout << "Estado......: ";
-        std::getline(std::cin, Estado);
-        cliente.setEstado(Estado);
+            std::cout << "Estado......: ";
+            std::getline(std::cin, Estado);
+            cliente.setEstado(Estado);
 
-        std::cout << "Numero......: ";
-        std::cin >> Numero;
-        cliente.setNumero(Numero);
-        std::cin.ignore();
+            std::cout << "Numero......: ";
+            std::cin >> Numero;
+            cliente.setNumero(Numero);
+            std::cin.ignore();
 
-        std::cout << "Complemento......: ";
-        std::getline(std::cin, Complemento);
-        cliente.setComplemento(Complemento);
+            std::cout << "Complemento......: ";
+            std::getline(std::cin, Complemento);
+            cliente.setComplemento(Complemento);
 
-        std::cout << "Ativo (0 ou 1)......: ";
+            std::cout << "Ativo (0 ou 1)......: ";
 
-        do {
-            std::cin >> isAtivo;
-        } while (isAtivo != 0 && isAtivo != 1);
+            do {
+                std::cin >> isAtivo;
+            } while (isAtivo != 0 && isAtivo != 1);
 
-        cliente.setisAtivo(isAtivo);
+            cliente.setisAtivo(isAtivo);
+        }
+        catch (std::string erro) {
+
+        }
     }
 };
 

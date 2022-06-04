@@ -24,7 +24,7 @@ class ControleEntradaSaidaVeiculo {
 
 public:
 
-    ControleEntradaSaidaVeiculo() : 
+    ControleEntradaSaidaVeiculo() :
         _ent_saida_dao(EntradaSaidaVeiculoDAO()),
         _tela_ent_saida(TelaEntradaSaidaVeiculo()),
         _ent_saida_veiculos(std::vector<Entrada_Saida_Veiculo>())
@@ -67,17 +67,17 @@ public:
         try {
             Entrada_Saida_Veiculo ent_saida = _tela_ent_saida.lerNovaEntrada(_ent_saida_dao.getCurrentID());
 
-            if (ent_saida.insereEntSaida(_ent_saida_veiculos, ent_saida)) {
-
-                _ent_saida_dao.salvaListaEntradaSaida(_ent_saida_veiculos);
-
-                _ent_saida_dao.updateCurrentID();
+            if (&ent_saida == NULL) {
+                throw "\n\nNao foi possivel validar os dados informados!";
             }
-            else {
-                _tela_ent_saida.exibirMensagemErro("\n\nNao foi possivel cadastrar, vaga ocupada!");
-            }
+
+            ent_saida.insereEntSaida(_ent_saida_veiculos, ent_saida);
+
+            _ent_saida_dao.salvaListaEntradaSaida(_ent_saida_veiculos);
+
+            _ent_saida_dao.updateCurrentID();
         }
-        catch (const char* erro) {
+        catch (std::string erro) {
             _tela_ent_saida.exibirMensagemErro(erro);
         }
     }
@@ -91,7 +91,7 @@ public:
 
             _ent_saida_dao.salvaListaEntradaSaida(_ent_saida_veiculos);
         }
-        catch (const char* erro) {
+        catch (std::string erro) {
             _tela_ent_saida.exibirMensagemErro(erro);
         }
     }
